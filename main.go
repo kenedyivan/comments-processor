@@ -40,15 +40,15 @@ func ProcessComments() {
 	body := RequestCommentsData("https://jsonplaceholder.typicode.com/comments")
 	comments, _ := GetCommentsFromString(body)
 	commentBody := ExtractCommentBody(comments)
-	words := getWordsFromString(commentBody)
-	wordFrequencyMap := getWordFrequency(words)
+	words := GetWordsFromString(commentBody)
+	wordFrequencyMap := GetWordFrequency(words)
 	myWords := ParseToSortedWordSlice(wordFrequencyMap)
 	fourLeastUsedWords := GetWords(myWords, 4)
-	DisplayWords(fourLeastUsedWords)
+	Display(fourLeastUsedWords)
 }
 
-//DisplayWords prints the words and their word count to console
-func DisplayWords(w []Word) {
+//Display prints the words and their word count to console
+func Display(w []Word) {
 
 	for k, v := range w {
 		fmt.Printf("%d, %s -> %d\n", k+1, v.Word, v.Count)
@@ -77,8 +77,8 @@ func GetWords(words []Word, count int) []Word {
 	return words[:count]
 }
 
-// getWordsFromString returns a slice of words in the given string
-func getWordsFromString(s string) []string {
+// GetWordsFromString returns a slice of words in the given string
+func GetWordsFromString(s string) []string {
 	return strings.Fields(s)
 }
 
@@ -104,9 +104,9 @@ func GetCommentsFromString(s string) ([]Comment, error) {
 	return comments, errr
 }
 
-// getWordFrequency gets counts the number of times each word appears in the string and returns a map of each word and
+// GetWordFrequency gets counts the number of times each word appears in the string and returns a map of each word and
 // the number of times is appears in the string
-func getWordFrequency(s []string) map[string]int {
+func GetWordFrequency(s []string) map[string]int {
 	m := make(map[string]int)
 	for _, v := range s {
 		if val, ok := m[v]; ok {

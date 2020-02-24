@@ -69,7 +69,7 @@ func TestGetCommentBodyWordSlice(t *testing.T) {
 
 	input := "Hello world hello world hello world hello hello hello hello world world"
 
-	generatedWordSlice := getWordsFromString(input)
+	generatedWordSlice := GetWordsFromString(input)
 	if len(generatedWordSlice) != 12 {
 		t.Errorf("Expected slice size to be '12'. Got '%v'", len(generatedWordSlice))
 	}
@@ -79,7 +79,7 @@ func TestGenerateWordFrequencyMap(t *testing.T) {
 
 	wordSlice := []string{"Hello", "world", "hello", "world", "hello", "world", "hello", "hello", "hello", "hello", "world", "world"}
 
-	generatedWordFrequencyMap := getWordFrequency(wordSlice)
+	generatedWordFrequencyMap := GetWordFrequency(wordSlice)
 
 	if generatedWordFrequencyMap["Hello"] != 1 {
 		t.Errorf("Expected slice Hello frequency to be '1'. Got '%v'", generatedWordFrequencyMap["Hello"])
